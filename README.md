@@ -22,7 +22,7 @@
   apply, call和bind\
   数组方法map, filter, reduce，find,some,every使用和实现\
   数组扁平化\
-  从什么是ajax到使用ajax\
+  从什么是ajax到使用ajax(https://github.com/kricn/web-notes/blob/master/js/%E4%BB%80%E4%B9%88%E6%98%AFAJAX%E5%88%B0%E4%BD%BF%E7%94%A8AJAX.md)\
   前端通信及跨域\
   js事件机制到封装事件侦听函数\
   localStorage、sessionStorage和cookie及js缓存控制(catch-control)\
