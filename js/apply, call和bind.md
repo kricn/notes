@@ -76,12 +76,33 @@ Function.prototype.myApply = function (context) {
 } 
 ```
 **call的实现**
-
-
-
-
-
-
+```javascript
+//参数context即所要指向的对象，就是对应上文obj
+Function.prototype.myApply = function (context) {
+  //判断是不是函数在调用这个方法
+  if(typeof this !== 'function') throw new Error(`${this} is not a function`)
+  //调用这个方法的函数可能有返回值
+  let res = undefined;
+  //this是个函数，即调用myApply的函数，将其赋给context的一个属性，改变函数内部this指向
+  context.fn = this;
+  //给context一个默认值，没有传参的话就指向window,在node环境下就是object
+  context = context || window
+  //获取除context之外的其他参数，可能有也可能没有
+  //call传的是多个参，而不是一个数组
+  let args = [...arguments].slice(1) //arguments的第一个是context
+  if(args) {
+    //this本身就是一个函数，通过es6语法将数组展开传入this函数
+    //其实就是context在调用函数，这样调用函数的this自然指向调用它的对象，即context
+    res = context.fn(...args)
+  }else{
+    //若没有其他参数，直接执行this函数即可
+    context.fn()
+  }
+  //返回res
+  return res
+}
+```
+**bind的实现**
 
 
 
