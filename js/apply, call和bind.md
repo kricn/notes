@@ -103,8 +103,80 @@ Function.prototype.myApply = function (context) {
 }
 ```
 **bind的实现**
-
-
-
-
-
+bind会返回一个函数，因此除了直接赋值给一个变量再执行或直接执行外，还可以用new操作符去实例返回的函数，因此先了解下
+new做了什么？
+```javascript
+//new做了什么
+function create(context, ...args){
+  //声明一个空对象
+  let obj = {}
+  //将obj对象的__proto__指向构造函数的的原型
+  Object.setPrototypeOf(obj, context.prototype)
+  //改变构造函数this指向，指向obj
+  let res = context.apply(obj, args)
+  //若构造函数有返回值且其类型是个对象，则返回构造函数所返回的值，否则返回之前声明的对象
+  return res instanceof Object ? res : obj
+}
+```
+用new去实例化一个构造函数，其this会指向实例，优先级最高，即
+```javascript
+let value = 2
+let obj = {value: 1}
+function foo () {
+  console.log(this.value)
+}
+let fn = foo.bind(obj)
+let f = new fn()
+```
+以上会打印出undefined，因为foo中的this指向变量f，而变量f中没有value值。\
+在bind的实现中，不只是改变函数this的指向然后包在一个函数里边就返回出来，
+还要判断返回出去的函数是否用了new操作符。
+```javascript
+Function.prototype.mybind = function (context) {
+  //保存一份this，this是个函数
+  const _this = this
+  //获取调用bind时的参数
+  const args = [...arguments].slice(1)
+  context = context || window
+  if(typeof this !== 'function'){
+    throw new Error("error")
+  }
+  const resFn = function () {
+    //因为返回的的数可以再传参数，故需要和bind时所传的参数一起收集
+    const argus = args.concat([...arguments])
+    //此处判断其是否用了new操作符
+    //如果用了new，些时this指向其构造函数，即_this
+    //若直接执行，this则是window,则是普通的bind
+    return _this.apply(this instanceof _this ? this : context, argus)
+  }
+  //继承构造函数，故将其返回函数的原型指向new出来的实例
+  //这里借助一个空函数
+  const emptyFn = function () {}
+  emptyFn.prototype = this.prototype
+  resFn.prototype = new emptyFn()
+  return resFn
+}
+```
+回到之前的问题，为什么多次绑定了bind会无效
+```javascript
+let obj1 = {value: 1}, obj2 = {value: 2}
+function foo () {console.log(this.value)}
+let fn = foo.mybind(obj1)
+fn()  //1
+let f = fn.mybind(obj2)
+f()  //1     函数foo指向obj2无效
+```
+是不是mybind在用第二次就无效了呢？\
+并不是，mybind在用第二次依然有效，它也的确改变了this的指向，但改变的仅仅是它之前整个函数的指向
+```javascript
+//(foo.mybind(obj1).mybind(obj2).mybind(obj3))()  拆解成以下代码
+let first = foo.mybind(obj1)
+let two = first.mybind(obj2)
+let three = two.mybind(obj3)
+three()
+//执行结果依旧是foo执行的结果
+//two的this指向obj3，但也仅仅是指向，并没有执行foo函数，而是执行了整个two
+//同理，first的this指向obj2，执行first函数，
+//一路往上执行到了first时，foo的this指向obj1，执行foo，才得到结果，此时this是指向obj1的
+//也就是说first之后调用mybind的，并没有改变foo里this的指向，改变的是其之前整个函数的this的指向
+```
