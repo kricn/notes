@@ -19,7 +19,7 @@
   [Event Loop遇上Promise（待更）](https://github.com/kricn/web-notes/blob/master/js/%E5%BD%93eventloop%E9%81%87%E4%B8%8Apromise.md)\
   [这就是闭包](https://github.com/kricn/web-notes/blob/master/js/%E8%BF%99%E5%B0%B1%E6%98%AF%E9%97%AD%E5%8C%85.md)\
   [节流、防抖和函数柯里化等闭包应用（待更）](https://github.com/kricn/web-notes/blob/master/js/%E9%97%AD%E5%8C%85%E7%9A%84%E5%BA%94%E7%94%A8.md)\
-  apply, call和bind\
+  [apply, call和bind](https://github.com/kricn/web-notes/blob/master/js/apply,%20call%E5%92%8Cbind.md)\
   数组方法map, filter, reduce，find,some,every使用和实现\
   数组扁平化\
   [从什么是ajax到使用ajax](https://github.com/kricn/web-notes/blob/master/js/%E4%BB%80%E4%B9%88%E6%98%AFAJAX%E5%88%B0%E4%BD%BF%E7%94%A8AJAX.md)\
