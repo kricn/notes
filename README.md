@@ -24,13 +24,13 @@
   数组扁平化\
   [从什么是ajax到使用ajax](https://github.com/kricn/web-notes/blob/master/js/%E4%BB%80%E4%B9%88%E6%98%AFAJAX%E5%88%B0%E4%BD%BF%E7%94%A8AJAX.md)\
   前端通信及跨域\
-  js事件机制到封装事件侦听函数\
+  [js事件机制](https://github.com/kricn/web-notes/blob/master/js/js%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6.md)\
   localStorage、sessionStorage和cookie及js缓存控制(catch-control)\
   webpack?\
-  node?\
+  node?
 
 # 网络通信相关
-  什么是广域网到局域网，HTTP, TCP/IP, UDP, IP\
+  什么是广域网, 局域网，HTTP, TCP/IP, UDP, IP\
   HTTP请求\
   从输入url到页面显示，浏览器做了什么\
   HTTP的三次握手四次挥手
