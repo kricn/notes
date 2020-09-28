@@ -198,13 +198,3 @@ web.onclick = fucntion (e) {
 }
 </script>
 ```
-## 事件侦听函数
-
-
-
-
-
-
-
-
-
