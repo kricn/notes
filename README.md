@@ -7,11 +7,10 @@
   video 和 audio
   
 # CSS
-  盒子模型\
   自适应布局\
   元素垂直、水平和垂直水平居中\
   外边距折叠和外边距塌陷\
-  块级格式化上下文(block formatting context, BFC)\
+  盒子模型和块级格式化上下文(block formatting context, BFC)\
   css选择器，选择器优先级，属性继承，伪类，伪元素  
   
 # JS
