@@ -1,10 +1,6 @@
 # web-notes
 记录前端相关相关知识点，自己所理解的知识点
 
-# HTML
-  优雅降级和渐进增强\
-  canvas?\
-  video 和 audio
   
 # CSS
   自适应布局\
