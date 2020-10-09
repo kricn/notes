@@ -6,7 +6,7 @@
   自适应布局\
   元素垂直、水平和垂直水平居中\
   外边距折叠和外边距塌陷\
-  盒子模型和块级格式化上下文(block formatting context, BFC)\
+  [盒子模型和块级格式化上下文(block formatting context, BFC)](https://github.com/kricn/web-notes/blob/master/css/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%8F%8ABFC.md)\
   css选择器，选择器优先级，属性继承，伪类，伪元素  
   
 # JS
