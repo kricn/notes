@@ -21,9 +21,9 @@ ol, dl, dd, table, menu, header, section, footer等。\
 textarea, select, button(这个默认状态下是inline-block)。
 ## 块级格式化上下文(BFC)
 BFC会形成一个独立的渲染区域，形成BFC的盒子，其内部的布局独立存在，不影响BFC盒子外部盒子的布局。整个html标签即是一个BFC盒子。
-**BFC特点**
+**BFC特点**\
 1、BFC盒子里块元素会垂直排列，默认宽度和BFC盒子一样宽\
-2、BFC内垂直方向上的外边距(margin)会重叠，及外边距塌陷，以最大的外边距为准、
+2、BFC内垂直方向上的外边距(margin)会重叠，及外边距塌陷，以最大的外边距为准\
 3、BFC不会被浮动元素覆盖(通常用来自适应布局，浮动元素后跟一个bfc元素)
 ```html
 <!-- 自适应布局 -->
@@ -44,8 +44,8 @@ html, body {
 }
 </style>
 ```
-**触发BFC**
-float不为none
-overflow不为visible
-display为table-cell, table-caption, inline-block中的任何一个
+**触发BFC**\
+float不为none\
+overflow不为visible\
+display为table-cell, table-caption, inline-block中的任何一个\
 position不为relative和static
