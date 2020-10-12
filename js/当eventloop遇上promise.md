@@ -90,4 +90,40 @@ console.log(1)
 -> 执行微队列，打印出3，至此微队列全部执行完毕，切换宏任务 -> 打印出5 -> 任务队列为空，执行完毕\
 **主线程执行完毕后，检查微队列，微队列为空才能执行宏队列，即使执行最后一个微任务时产生新的微任务，那也要执行完新产生的微任务**
 ## node 中的Event Loop
--- 
+**node中的Event Loop在v10之前与浏览器的不尽相同，在v10之后和浏览器的Event Loop一致**\
+node在执行时会初始化event loop，执行完每个阶段的宏任务，再处理process.nextTick和微任务\
+node的宏任务如下按顺序执行：\
+timers: 该阶段执行已经安排好的定时器和延时器的回调函数 -> \
+I/O callback: 该阶段几乎执行所有回调函数，除了close callbacks以及timers调度的回调和setImmediate()调度的回调 -> \
+idle, prepare: 只在内部使用(不是很理解) -> \
+poll(轮询): 检索新的I/O事件，并执行其相应的回调 -> \
+check: setImmediate的回调将会在这个阶段执行 -> \
+close callbacks: 执行一些准备关闭的回调函数，比如socket.on('close', ...)\
+node在v10之前，每个阶段任务处理完后才会处理process.nextTick和微任务，v10之后是处理完一个阶段中的一个任务，便会处理process.nextTick和微任务，与浏览器的一致
+```javascript
+function foo () {
+  setTimeout(function () {
+    console.log("a")
+  }, 0)
+  console.log("b")
+  setTimeout(function () {
+    console.log("c")
+    process.nextTick(function () {
+      console.log("d")
+    })
+  }, 0)
+  Promise.resolve().then(function () {
+    console.log("e")
+  })
+  console.log("f")
+}
+foo()
+//v10之前
+// b f e a c d (因为两个setTimeout处于同一任务阶段，只有该阶段执行完才会执行process.nextTick和微任务)
+//process.nextTick的优先级大于微任务，先执行完process.nextTick再执行微任务
+
+//v10之后，与浏览器一致（浏览器打印d会报错）
+// b f e a c d
+
+```
+
