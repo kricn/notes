@@ -17,11 +17,10 @@
   数组方法map, filter, reduce，find,some,every使用和实现\
   数组扁平化\
   [从什么是ajax到使用ajax](https://github.com/kricn/web-notes/blob/master/js/%E4%BB%80%E4%B9%88%E6%98%AFAJAX%E5%88%B0%E4%BD%BF%E7%94%A8AJAX.md)\
-  前端通信及跨域\
+  前端通信\
+  [前端跨域](https://github.com/kricn/web-notes/blob/master/js/%E8%B7%A8%E5%9F%9F.md)\
   [js事件机制](https://github.com/kricn/web-notes/blob/master/js/js%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6.md)\
   [localStorage、sessionStorage和cookie](https://github.com/kricn/web-notes/blob/master/js/cookie%E5%92%8Cweb%20storage.md)\
-  webpack?\
-  node?
 
 # 网络通信相关
   [什么是广域网, 局域网，IP](https://github.com/kricn/web-notes/blob/master/internet/%E4%BB%8Eip%E5%88%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%88%B0%E5%B9%BF%E5%9F%9F%E7%BD%91.md)\
