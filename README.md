@@ -14,8 +14,6 @@
   [这就是闭包](https://github.com/kricn/web-notes/blob/master/js/%E8%BF%99%E5%B0%B1%E6%98%AF%E9%97%AD%E5%8C%85.md)\
   [节流、防抖和函数柯里化等闭包应用（待更）](https://github.com/kricn/web-notes/blob/master/js/%E9%97%AD%E5%8C%85%E7%9A%84%E5%BA%94%E7%94%A8.md)\
   [apply, call和bind](https://github.com/kricn/web-notes/blob/master/js/apply,%20call%E5%92%8Cbind.md)\
-  数组方法map, filter, reduce，find,some,every使用和实现\
-  数组扁平化\
   [从什么是ajax到使用ajax](https://github.com/kricn/web-notes/blob/master/js/%E4%BB%80%E4%B9%88%E6%98%AFAJAX%E5%88%B0%E4%BD%BF%E7%94%A8AJAX.md)\
   [前端通信](https://github.com/kricn/web-notes/blob/master/js/%E5%89%8D%E7%AB%AF%E9%80%9A%E4%BF%A1.md)\
   [前端跨域](https://github.com/kricn/web-notes/blob/master/js/%E8%B7%A8%E5%9F%9F.md)\
@@ -26,5 +24,4 @@
   [什么是广域网, 局域网，IP](https://github.com/kricn/web-notes/blob/master/internet/%E4%BB%8Eip%E5%88%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%88%B0%E5%B9%BF%E5%9F%9F%E7%BD%91.md)\
   [HTTP请求](https://github.com/kricn/web-notes/blob/master/internet/http%E8%AF%B7%E6%B1%82.md)\
   [从输入url到页面显示，浏览器做了什么](https://github.com/kricn/web-notes/blob/master/internet/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA.md)
-# 其它
-  web性能优化方法
+# web性能优化
