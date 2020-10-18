@@ -20,6 +20,15 @@
   [js事件机制](https://github.com/kricn/web-notes/blob/master/js/js%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6.md)\
   [localStorage、sessionStorage和cookie](https://github.com/kricn/web-notes/blob/master/js/cookie%E5%92%8Cweb%20storage.md)
 
+  # 数据结构
+  链表
+  二叉树
+
+
+  # 算法
+  冒泡，快速排序
+
+
 # 网络通信相关
   [什么是广域网, 局域网，IP](https://github.com/kricn/web-notes/blob/master/internet/%E4%BB%8Eip%E5%88%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%88%B0%E5%B9%BF%E5%9F%9F%E7%BD%91.md)\
   [HTTP请求](https://github.com/kricn/web-notes/blob/master/internet/http%E8%AF%B7%E6%B1%82.md)\
