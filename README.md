@@ -19,7 +19,7 @@
   [前端跨域](https://github.com/kricn/web-notes/blob/master/js/%E8%B7%A8%E5%9F%9F.md)\
   [js事件机制](https://github.com/kricn/web-notes/blob/master/js/js%E4%BA%8B%E4%BB%B6%E6%9C%BA%E5%88%B6.md)\
   [localStorage、sessionStorage和cookie](https://github.com/kricn/web-notes/blob/master/js/cookie%E5%92%8Cweb%20storage.md)\
-  [普通函数和箭头函数的区别](https://github.com/kricn/web-notes/blob/master/js/%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md）
+  [普通函数和箭头函数的区别](https://github.com/kricn/web-notes/blob/master/js/%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md)
 
   # 数据结构
   链表\
