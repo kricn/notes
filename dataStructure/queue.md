@@ -100,17 +100,41 @@ const circularQueue = (queue, tail) => {
   }
 }
 ```
+## 用队列实现基数排序
+基数排序就是给写一个整数数组，先对其个位进行排序，并送入相应下标的队列中，各位排完序后，再按下标顺序出列，
+接着再去排十位，百位...\
+借用菜鸟教程一张图解释
+![](https://www.runoob.com/wp-content/uploads/2019/03/radixSort.gif)
+```javascript
+let queues = []  //存储下标的队列，比如其个位是1，那么就放进queues[1]中
+let nums = []    //需要排序的数组
+function distribution(queues, nums) {
+  //找出最大数
+  const max = Math.max(...nums)
+  //最大数是几位数
+  const maxLen = String(max).length
 
-
-
-
-
-
-
-
-
-
-
-
-
+  //开始循环，循环次数是最大数的长度（几位数）
+  for (let i = 0; i < maxLen; i ++) {
+    //t用来标志nums里的数字，每循环完一个位数就归零（因为此时该位数已经排好了）
+    let t = 0
+    //循环nums
+    for (let j = 0; j < nums.length; j ++) {
+      //这里是从个位开始排序
+      if ( i === 0 ) {
+        queues[ nums[j] % 10 ].enqueue(nums[j])
+      } else {
+        //获取除各位外的其它位数
+        queues[ Math.floor( (nums[j] / Math.pow(10, i)) % 10 ) ].enqueue(nums[j])
+      }
+    }
+    //每排序好一个位数，重新收集一次数组，下次再次排序
+    for (let k = 0; k < 10; k ++) {
+      while  ( !queues[k].empty() ) {
+        nums[t++] = queues[k].dequeue()
+      }
+    }
+  }
+}
+```
 
