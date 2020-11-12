@@ -150,5 +150,18 @@ class LinkedList {
   }
 }
 ```
-
+## 双向链表
+双向链表的Node类会多出一个指向前一个node的指针
+```javascript
+class Node {
+  constructor(ele){
+    this.ele = ele;  //节点的值
+    this.next = null;  //指向下一节点的指针，默认为null, 即该节点默认是最后一个节点
+    this.prev = null;
+  }
+}
+```
+双向链表在单项链表的基础上，在操作单项链表的next指针时，同时也将prev指针指向上一个节点即可。
+## 循环链表
+顾名思义，这种链表的head和tail都会指向同一个node，形成闭环。
 
