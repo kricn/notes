@@ -25,7 +25,7 @@
   # 数据结构
   [栈(Stack)](https://github.com/kricn/web-notes/blob/master/dataStructure/stack.md)\
   [队列(Queue)](https://github.com/kricn/web-notes/blob/master/dataStructure/queue.md)\
-  链表\
+  [链表](!https://github.com/kricn/web-notes/blob/master/dataStructure/linkedList.md)\
   二叉树
 
 
