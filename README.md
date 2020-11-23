@@ -4,7 +4,7 @@
   
 # CSS
   自适应布局\
-  元素垂直、水平和垂直水平居中\
+  [元素垂直、水平和垂直水平居中](https://github.com/kricn/web-notes/blob/master/css/%E5%85%83%E7%B4%A0%E5%9E%82%E7%9B%B4%E3%80%81%E6%B0%B4%E5%B9%B3%E5%92%8C%E5%9E%82%E7%9B%B4%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD.md)\
   [盒子模型和块级格式化上下文(block formatting context, BFC)](https://github.com/kricn/web-notes/blob/master/css/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E5%8F%8ABFC.md)\
   [css选择器，选择器优先级，伪类，伪元素](https://github.com/kricn/web-notes/blob/master/css/css%E9%80%89%E6%8B%A9%E5%99%A8.md)
   
