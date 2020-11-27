@@ -22,16 +22,26 @@
   [普通函数和箭头函数的区别](https://github.com/kricn/web-notes/blob/master/js/%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md)\
   [浅拷贝和深拷贝](https://github.com/kricn/web-notes/blob/master/js/%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.md)
 
-  # 数据结构
-  [栈(Stack)](https://github.com/kricn/web-notes/blob/master/dataStructure/stack.md)\
-  [队列(Queue)](https://github.com/kricn/web-notes/blob/master/dataStructure/queue.md)\
-  [链表(LinkedList)](https://github.com/kricn/web-notes/blob/master/dataStructure/linkedList.md)\
-  二叉树
+# 前端框架
+  Vue\
+  React
+  
+# 后端
+  nest
+  
+# 数据结构
+[栈(Stack)](https://github.com/kricn/web-notes/blob/master/dataStructure/stack.md)\
+[队列(Queue)](https://github.com/kricn/web-notes/blob/master/dataStructure/queue.md)\
+[链表(LinkedList)](https://github.com/kricn/web-notes/blob/master/dataStructure/linkedList.md)\
+二叉树
 
 
-  # 算法
-  冒泡\
-  快速排序
+# 算法
+时间复杂度和空间复杂度\
+冒泡\
+快速排序
+
+# 算法题
 
 
 # 网络通信相关
