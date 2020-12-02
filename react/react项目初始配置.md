@@ -51,3 +51,50 @@ npm install sass-loader node-sass@4.14.1 sass-resources-loader --save-dev
     sideEffects: true,
 }
 ```
+### 配置ant design
+```shell
+# 安装ant design
+npm install antd --save-dev
+
+# 在webpack.config.js文件中找到module中的配置js的规则
+# 在plugins中加入依赖['import', { libraryName: 'antd', style: 'css'}]
+{
+    test: /\.(js|mjs|jsx|ts|tsx)$/,
+    include: paths.appSrc,
+    loader: require.resolve('babel-loader'),
+    options: {
+    customize: require.resolve(
+        'babel-preset-react-app/webpack-overrides'
+    ),
+    presets: [
+        [
+        require.resolve('babel-preset-react-app'),
+        {
+            runtime: hasJsxRuntime ? 'automatic' : 'classic',
+        },
+        ],
+    ],
+    
+    plugins: [
+        [
+        require.resolve('babel-plugin-named-asset-import'),
+        {
+            loaderMap: {
+            svg: {
+                ReactComponent:
+                '@svgr/webpack?-svgo,+titleProp,+ref![path]',
+            },
+            },
+        },
+        ],
+        ['import', { libraryName: 'antd', style: 'css'}], //加在这里
+        isEnvDevelopment &&
+        shouldUseReactRefresh &&
+        require.resolve('react-refresh/babel'),
+    ].filter(Boolean),
+    cacheCompression: false,
+    compact: isEnvProduction,
+    },
+},
+
+```
