@@ -26,6 +26,9 @@
 ## Vue
 ## React
   react项目配置
+
+# 微信小程序
+  微信小程序功能实现查询文
   
 # 后端
   nest
@@ -50,3 +53,4 @@
   [HTTP请求](https://github.com/kricn/web-notes/blob/master/internet/http%E8%AF%B7%E6%B1%82.md)\
   [从输入url到页面显示，浏览器做了什么](https://github.com/kricn/web-notes/blob/master/internet/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA.md)
 # web性能优化
+  vue首屏加载优化
