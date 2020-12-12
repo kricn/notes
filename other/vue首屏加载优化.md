@@ -52,5 +52,66 @@ npm run build --reoprt 或 npm run serve --report
 ```javascript
 // 像一些基本不变的模块包，如vue-router, axios, vuex等
 // 可以改用cnd加载，国内服务可以用bootcdn
-// 
+
+//在pubilc文件夹下的index.html引入需要的第三方库
+//引入之后，全局环境下就会存在变量 $ 和 Jquery
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+// 在 webpack.config.js 或 vue.config.js 中配置externals
+module.exports = {
+  ...,
+  externals: {
+    'jquery': 'Jquery',
+    'vue-router': 'VueRouter',
+    'vuex': 'Vuex',
+    'axios': 'axios'
+  }
+  // externals属性中，左边的key可以自定义，右边有value是存在全局中的
+  // externals属性会将value这个全局变量（右边那个）映射到key（左边那个)
+  // 用vue时正常使用即可，即import VueRouter from 'vue-router'
+}
+```
+### 服务器开启gzip
+
+## 路由懒加载
+```javascript
+// import Home from '@/views/home.vue'  //导入，页面加载里就会引入
+router = [
+  {
+    path: '/',
+    component: () => import('@/views/home.vue'),  //懒加载
+    // component: Home  //没有懒加载
+  }
+]
+```
+## 压缩图片文件
+```javascript
+// 在vue.config.js 中
+module.exports = {
+  chainWebpack: config => {
+    config.module.rule('images')
+      .test('/\.png|jpe?g|gif|svg(\?.*)?$/')
+      .use('image-webpack-loader')
+      .loader('image-webpack-loader')
+      .options({
+        bypassOnDebug: true
+      })
+  } 
+}
+```
+## vue开启gzip压缩
+```javascript
+const CompressionPlugin = require("compression-webpack-plugin")
+module.exports = {
+  chainWebpack: config => {
+    if (process.env.NODE_ENV === 'production') {
+      config.plugin('compressionPlugin')
+      .use(new CompressionPlugin({
+        test:/\.js$|\.html$|.\css/, // 匹配文件名
+        threshold: 10240, // 对超过10k的数据压缩
+        deleteOriginalAssets: false // 不删除源文件
+      }))
+    }
+  }
+}
 ```
