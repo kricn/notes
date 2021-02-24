@@ -28,25 +28,19 @@
   react项目配置
 
 # 微信小程序
-  微信小程序功能实现查询文
   
 # 后端
   nest
   
-# 数据结构
-[栈(Stack)](https://github.com/kricn/web-notes/blob/master/dataStructure/stack.md)\
-[队列(Queue)](https://github.com/kricn/web-notes/blob/master/dataStructure/queue.md)\
-[链表(LinkedList)](https://github.com/kricn/web-notes/blob/master/dataStructure/linkedList.md)\
-二叉树
-
-
-# 算法
-[时间复杂度和空间复杂度](https://github.com/kricn/web-notes/blob/master/algorithm/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.md)\
+# 数据结构和算法
+[栈(Stack)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/stack.md)\
+[队列(Queue)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/queue.md)\
+[链表(LinkedList)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/linkedList.md)\
+二叉树\
+[时间复杂度和空间复杂度](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.md)\
 冒泡\
-快速排序
-
-# 算法题
-
+快速排序\
+:checkered_flag:leetcode记录
 
 # 网络通信相关
   [什么是广域网, 局域网，IP](https://github.com/kricn/web-notes/blob/master/internet/%E4%BB%8Eip%E5%88%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%88%B0%E5%B9%BF%E5%9F%9F%E7%BD%91.md)\
