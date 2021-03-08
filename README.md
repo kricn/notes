@@ -24,6 +24,7 @@
 
 # 前端框架
 ## Vue
+  [vue首屏加载优化](https://github.com/kricn/web-notes/blob/master/other/vue%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96.md)
 ## React
   react项目配置
 
@@ -46,5 +47,3 @@
   [什么是广域网, 局域网，IP](https://github.com/kricn/web-notes/blob/master/internet/%E4%BB%8Eip%E5%88%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E5%88%B0%E5%B9%BF%E5%9F%9F%E7%BD%91.md)\
   [HTTP请求](https://github.com/kricn/web-notes/blob/master/internet/http%E8%AF%B7%E6%B1%82.md)\
   [从输入url到页面显示，浏览器做了什么](https://github.com/kricn/web-notes/blob/master/internet/%E4%BB%8E%E8%BE%93%E5%85%A5url%E5%88%B0%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA.md)
-# web性能优化
-  [vue首屏加载优化](https://github.com/kricn/web-notes/blob/master/other/vue%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96.md)
