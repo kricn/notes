@@ -1,7 +1,8 @@
 # leetcode 记录
 [2. 两数相加(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/2.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0.md)\
 [20. 有效的括号(栈)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7.md)\
-[92. 反转链表 II](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/92.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%20II.md)\
+[92. 反转链表 II(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/92.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%20II.md)\
+[203. 移除链表元素(链表)]()\
 [206. 反转链表(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.md)\
 [739. 每日温度(栈)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/739.%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6.md)\
 [901. 股票价格跨度(栈)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/901.%20%E8%82%A1%E7%A5%A8%E4%BB%B7%E6%A0%BC%E8%B7%A8%E5%BA%A6.md)\
