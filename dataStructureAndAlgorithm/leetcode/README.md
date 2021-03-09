@@ -13,4 +13,4 @@
 [1190. 反转每对括号间的子串(栈)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/1190.%20%E5%8F%8D%E8%BD%AC%E6%AF%8F%E5%AF%B9%E6%8B%AC%E5%8F%B7%E9%97%B4%E7%9A%84%E5%AD%90%E4%B8%B2.md)\
 [1249. 移除无效的括号(栈)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/1249.%20%E7%A7%BB%E9%99%A4%E6%97%A0%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7.md)
 
-[剑指 Offer 18. 删除链表的节点(链表)]()
+[剑指 Offer 18. 删除链表的节点(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/%E5%89%91%E6%8C%87%20Offer%2018.%20%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E8%8A%82%E7%82%B9.md)
