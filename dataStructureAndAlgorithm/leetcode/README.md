@@ -4,6 +4,7 @@
 [20. 有效的括号(栈)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7.md)\
 [24. 两两交换链表中的节点(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9.md)\
 [92. 反转链表 II(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/92.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%20II.md)\
+[142. 环形链表 II(链表)]()\
 [203. 移除链表元素(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/203.%20%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.md)\
 [206. 反转链表(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8.md)\
 [739. 每日温度(栈)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/739.%20%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6.md)\
