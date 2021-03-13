@@ -4,7 +4,7 @@
 [20. 有效的括号(栈)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/20.%20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7.md)\
 [24. 两两交换链表中的节点(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/24.%20%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9.md)\
 [46. 全排列(回溯)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/46.%20%E5%85%A8%E6%8E%92%E5%88%97.md)\
-[51. N 皇后(回溯)]()\
+[51. N 皇后(回溯)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/51.%20N%20%E7%9A%87%E5%90%8E.md)\
 [92. 反转链表 II(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/92.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%20II.md)\
 [142. 环形链表 II(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II.md)\
 [203. 移除链表元素(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/203.%20%E7%A7%BB%E9%99%A4%E9%93%BE%E8%A1%A8%E5%85%83%E7%B4%A0.md)\
