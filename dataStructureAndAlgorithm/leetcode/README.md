@@ -6,7 +6,7 @@
 [34. 在排序数组中查找元素的第一个和最后一个位置(二分法)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/34.%20%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE.md)\
 [46. 全排列(回溯)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/46.%20%E5%85%A8%E6%8E%92%E5%88%97.md)\
 [51. N 皇后(回溯)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/51.%20N%20%E7%9A%87%E5%90%8E.md)\
-[76. 最小覆盖子串(滑动窗口)]()\
+[76. 最小覆盖子串(滑动窗口)]()https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/76.%20%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2.md\
 [92. 反转链表 II(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/92.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%20II.md)\
 [111. 二叉树的最小深度(BFS)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/111.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%B0%8F%E6%B7%B1%E5%BA%A6.md)\
 [142. 环形链表 II(链表)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/leetcode/142.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%20II.md)\
