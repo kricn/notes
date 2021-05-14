@@ -38,9 +38,90 @@ console.log(1)
 //当console.log(1)执行完毕，主线程空闲，宏任务就会被推入主线程中
 ```
 **当宏任务和微任务共存时，每当需要切换到其它宏任务时，若微队列有任务，则会优先处理微任务，处理完毕后再切换到宏任务:exclamation:**
-## Event Loop 与 Promise
+## Promise
 > Promise 对象用于表示一个异步操作的最终完成 (或失败), 及其结果值. --< MDN >
 ---
+每新建一个Promise，被promise包裹的代码会立即执行，同时promise进入fullfill状态，再没有明确指定状态改变时，promise并不会执行相关回调。
+```javascript
+new Promise((resolve, reject) => {
+  console.log(1)  // 立即执行，进入 fullfill 状态
+  resolve(2)  // 若没有 resove 或 reject fullfill 状态不会改变
+}).then(res => {
+  // res 是 resolve 传下来的参数
+  console.log(res)  // 2, promise 状态变为 resolve 会执行这个函数的回调
+}).then(res => {
+  console.log(res)  // undefined 多个 then 会同时执行，但 resolve 传的参数只会在第一层生效
+}).reject(err => {
+  // err 错误原因
+  console.log(err)  // promise 状态变为 resolve 会执行这个函数的回调
+})
+```
+### 取消 Promise
+```javascript
+// 通过 promise.race 取消
+function wrap(p) {
+  let obj = {};
+  // 这里主要用了 promise.race 的特性
+  // 当有一个 promise 状态改变后，与之一起 race 的 promise 都会被取消
+  let p1 = new Promise((resolve, reject) => {
+    // 将 promise 的 resolve, reject 方法外显
+    obj.resolve = resolve;
+    obj.reject = reject;
+  });
+  // 若内部函数不做任何操作，则返回外部的 promise
+  // 当外部调用了 obj.reject，此时若外部没有执行
+  obj.promise = Promise.race([p1, p]);
+  return obj;
+}
+
+let promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(123);
+  }, 1000);
+});
+// 返回一个对象
+let obj = wrap(promise);
+obj.promise.then(res => {
+  console.log(res);
+});
+obj.resolve("请求被拦截了");
+obj.reject("请求被拒绝了");
+
+//方法二 取消promise方法   新包装一个可操控的promise
+
+function wrap(p) {
+  let res = null;
+  let abort = null;
+
+  let p1 = new Promise((resolve, reject) => {
+    // 将 promise 的 resolve, reject 方法外显
+    res = resolve;
+    abort = reject;
+  });
+
+  // 自定义变量暴露 reject
+  p1.abort = abort;
+  p.then(res, abort);
+
+  return p1;
+}
+
+let promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(123);
+  }, 1000);
+});
+// 返回一个promise
+let obj = wrap(promise);
+obj.then(res => {
+  console.log(res);
+});
+// 相当于 promise.reject()
+obj.abort("请求被拦截");
+
+// 参考：https://juejin.cn/post/6844904148899463175
+```
+## Event Loop 与 Promise
 Promise刚创建时是同步对象，其里边的代码会立即执行\
 举个:pear:
 ```javascript
