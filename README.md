@@ -22,13 +22,12 @@
   [普通函数和箭头函数的区别](https://github.com/kricn/web-notes/blob/master/js/%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md)\
   [浅拷贝和深拷贝](https://github.com/kricn/web-notes/blob/master/js/%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.md)
 
-# 前端框架
-## Vue
-  [vue首屏加载优化](https://github.com/kricn/web-notes/blob/master/other/vue%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96.md)\
+# Vue
+  [vue首屏加载优化](/vue/vue首屏加载优化.md)\
   vue性能优化\
   双向绑定\
-  diff算法
-## React
+  [diff算法](/vue/diff/diff.md)
+# React
   react项目配置
 
 # 微信小程序
