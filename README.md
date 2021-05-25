@@ -25,8 +25,8 @@
 # Vue
   [vue首屏加载优化](/vue/vue首屏加载优化.md)\
   vue性能优化\
-  双向绑定\
-  [diff算法](/vue/diff/diff.md)
+  [响应式原理和双向绑定](/vue/mvvm)\
+  [diff算法](/vue/diff)
 # React
   react项目配置
 
