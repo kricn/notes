@@ -64,7 +64,7 @@ class Compiler {
 
   // 编译文本节点，处理差值表达式
   compileText(node) {
-    let reg = /\{\{((?:.|\r?\n)+?)\}\}/g
+    let reg = /\{\{((?:.|\r?\n)+?)\}\}/
     let value = node.textContent
     if (reg.test(value)) {
       let key = RegExp.$1.trim()

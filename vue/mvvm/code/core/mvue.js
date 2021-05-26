@@ -1,5 +1,5 @@
 import { Compiler } from "./complier"
-import { Observe } from "./observer"
+import { Observe } from "./observe"
 import { proxy } from './proxy' 
 
 class Vue {
