@@ -1,0 +1,13 @@
+.container {
+  height: 600px;
+  overflow: auto;
+  .list {
+    position: relative;
+    .item {
+      min-height: 59px;
+      background-color: #aaa;
+      text-align: center;
+      border-bottom: 1px solid #fff;
+    }
+  }
+}
