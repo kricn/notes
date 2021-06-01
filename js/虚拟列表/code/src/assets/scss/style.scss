@@ -1,12 +1,22 @@
 .container {
   height: 600px;
   overflow: auto;
+  position: relative;
+  .phantom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+  }
   .list {
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    text-align: center;
     .item {
-      min-height: 59px;
+      padding: 10px;
       background-color: #aaa;
-      text-align: center;
       border-bottom: 1px solid #fff;
     }
   }
