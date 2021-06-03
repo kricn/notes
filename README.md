@@ -42,8 +42,7 @@
 [链表(LinkedList)](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/linkedList.md)\
 二叉树\
 [时间复杂度和空间复杂度](https://github.com/kricn/web-notes/blob/master/dataStructureAndAlgorithm/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6.md)\
-冒泡\
-快速排序\
+[排序算法](/dataStructureAndAlgorithm/algo/排序算法.md)
 **:pushpin:[leetcode记录](https://github.com/kricn/web-notes/tree/master/dataStructureAndAlgorithm/leetcode)**
 
 # 网络通信相关
