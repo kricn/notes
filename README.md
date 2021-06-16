@@ -22,6 +22,7 @@
   [普通函数和箭头函数的区别](https://github.com/kricn/web-notes/blob/master/js/%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%92%8C%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0.md)\
   [浅拷贝和深拷贝](https://github.com/kricn/web-notes/blob/master/js/%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D.md)\
   [webpack不完全配置](/js/webpack)\
+  [axios请求重试和取消重复请求](/js/axios请求重试和取消重复请求)
 
 # Vue
   [vue首屏加载优化](/vue/vue首屏加载优化.md)\

@@ -11,10 +11,10 @@ const API = axios.create({
   // })
 })
 
-API.defaults.retryTimes = 3;
-API.defaults.retryCount = 0;
-API.defaults.retryDelay  = 500;
-API.defaults.shouldRetry = err => true;
+// axios 配置
+API.defaults.retryTimes = 3;  // 重试次数
+API.defaults.retryCount = 0;  // 已经重试了的次数
+API.defaults.retryDelay  = 500; // 重试间隔
 
 API.interceptors.request.use(config => {
   cancelPending(config); // 检查是否存在重复请求，若存在则取消已发的请求
@@ -33,21 +33,26 @@ API.interceptors.response.use(response => {
   return response;
 }, err => {
   let config = err.config
+  // 此处要移除请求，而不是取消请求
+  // 若取消请求，则下一次请求不再带有 config 对象，而是带 cancel 对象
   removePending(config)
   if (!config || !config.retryTimes) {
     return Promise.reject(err)
   }
   let { retryCount, retryDelay, retryTimes } = config
 
-  if (retryCount >= retryTimes) {
+  if (retryCount > retryTimes) {
     return Promise.reject(err)
   }
+  // 增加已经请求次数
   config.retryCount ++
+  // 延时执行
   const delay = new Promise(resolve => {
     setTimeout(() => {
       resolve()
     }, retryDelay);
   })
+  // 要用当前的实例 API 去再次发起请求
   return delay.then(() => API(config))
 })
 
