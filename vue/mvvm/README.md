@@ -289,7 +289,61 @@ class Vue {
 export { Vue }
 ```
 
+## 注意点
+
+响应式原理虽然可以通过数据去驱动视图更新，前提是修改已被劫持的变量，这样更改变量的值才会触发 setter。若响应式变量又引用外部的静态变量，外部的静态变量通过其它方式改变，则响应式变量可能会出现不更新的情况。
+
+```javascript
+<script>
+let a = '1'
+function changeStaticVarible() {
+    a = '2'
+}
+export default {
+    data() {
+        return {
+            variable: a
+        }
+    },
+    mounted: {
+        console.log(this.variable) // 1
+        changeStaticVarible()
+        console.log(this.variable) // 1
+        // 外部变量通过其他方式改变，响应式的 variable 并没有改变
+    }
+}
+</script>
+```
+
+虽然响应式对象并不能知道外部的静态变量已经通过其它方式改变了，但对象或数组是可以的，因为两者是引用型的数据类型，只要其地址不改变，则响应式的变量就能读取到新的值
+
+```js
+<script>
+let bar = {a:1}
+function changeStaticVarible() {
+    bar.a = 2
+}
+export default {
+    data() {
+        return {
+            variable: bar
+        }
+    },
+    mounted: {
+        console.log(this.variable) // {a:2}
+        changeStaticVarible()
+        console.log(this.variable) // {a:2}
+        // 前后两个都会是更改后的值！
+        // 因为 vue 更新数据发生该表后并不会立即更新视图，而是会等一段时间，用来收集其它需要更新的 watcher
+    }
+}
+</script>
+```
+
+
+
 ## 参考链接
+
 https://vue3js.cn/interview/vue/bind.html#%E4%BA%8C%E3%80%81%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88
 https://segmentfault.com/a/1190000006599500
 https://zhuanlan.zhihu.com/p/130712271
