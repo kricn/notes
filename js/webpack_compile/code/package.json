@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "build": "node ./core.js"
+  },
   "dependencies": {
     "@babel/core": "^7.14.8",
     "@babel/parser": "^7.14.8",

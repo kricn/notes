@@ -7,6 +7,7 @@ const parser = require('@babel/parser')
 const traverse = require('@babel/traverse').default
 // 配合 @babel/preset-env 生成可执行代码的
 const { transformFromAst } = require('@babel/core')
+const { dirExists } = require('./utils/index.js')
 
 const Parser = {
   // 生成 ast 树
@@ -91,7 +92,7 @@ class Compiler {
     }
   }
   // 重写 require函数,输出bundle
-  generate(code) {
+  async generate(code) {
     // 输出文件路径
     const filePath = path.join(this.output.path, this.output.filename)
     const bundle = `(function(graph){
@@ -109,6 +110,7 @@ class Compiler {
     })(${JSON.stringify(code)})`
 
     // 把文件内容写入到文件系统
+    await dirExists(this.output.path)
     fs.writeFileSync(filePath, bundle, 'utf-8')
   }
 }
