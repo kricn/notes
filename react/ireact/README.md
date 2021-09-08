@@ -324,3 +324,10 @@ renderComponent() {
   //...
 }
 ```
+# 异步 setState
+在 react 中 Component 中，每次 setState 都会立即渲染视图，需要对其做优化。
+
+
+# 参考
+https://github.com/hujiulong/blog/issues/4\
+https://reactjs.org/docs/getting-started.html
