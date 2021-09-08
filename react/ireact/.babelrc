@@ -1,0 +1,8 @@
+{
+  "presets": ["env"],
+  "plugins": [
+      ["transform-react-jsx", {  // transform-react-jsx 转换 jsx 语法为 js 的 babel 插件，需要安装 babel-plugin-transform-react-jsx
+          "pragma": "React.createElement"  // pragma 参数可以指定在其他地方用 React.createElement 的方式去调用这个插件
+      }]
+  ]
+}
