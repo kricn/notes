@@ -13,6 +13,19 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    for(let i = 0; i < 100; i ++) {
+      // this.setState({count: this.state.count + 1})
+      // console.log(this.state.count)
+      this.setState((prev) => {
+        console.log(prev.count)
+        return {
+          count: prev.count + 1
+        }
+      })
+    }
+  }
+
   render() {
     const add = () => {
       this.setState({

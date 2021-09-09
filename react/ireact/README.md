@@ -325,7 +325,95 @@ renderComponent() {
 }
 ```
 # 异步 setState
-在 react 中 Component 中，每次 setState 都会立即渲染视图，需要对其做优化。
+在 react 中 Component 中，每次 setState 都会立即渲染视图，需要对其做优化。\
+异步 setState 优化用到了浏览器的事件循环机制，通过[微任务](https://github.com/kricn/web-notes/blob/master/js/%E5%BD%93eventloop%E9%81%87%E4%B8%8Apromise.md)去延迟渲染视图\
+修改 setState 方法，每次调用 setState 时，先不更新视图，而是用队列保存起来，一段时间后，清空队列并渲染视图
+```js
+// /core/react.js
+class Component {
+  // ...
+  
+  setState(stateChange) {
+    enqueueSetState(stateChange, this)
+  }
+  // 定义更新队列
+  const queue = [];
+  // 渲染队列
+  const renderQueue = [];
+  function enqueueSetState( stateChange, component ) {
+    // 如果queue的长度是0，也就是在上次flush执行之后第一次往队列里添加
+    if ( queue.length === 0 ) {
+        defer( flush );
+    }
+    queue.push( {
+      stateChange,
+      component
+    });
+    // 如果renderQueue里没有当前组件，则添加到队列中
+    if ( !renderQueue.some( item => item === component ) ) {
+        renderQueue.push( component );
+    }
+  },
+
+  // 清空更新队列
+  function flush() {
+    let item;
+    // 遍历
+    while( item = setStateQueue.shift() ) {
+
+      const { stateChange, component } = item;
+
+      // 如果没有prevState，则将当前的state作为初始的prevState
+      if ( !component.prevState ) {
+          component.prevState = Object.assign( {}, component.state );
+      }
+
+      // 如果stateChange是一个方法，也就是setState的第二种形式
+      if ( typeof stateChange === 'function' ) {
+          Object.assign( component.state, stateChange( component.prevState, component.props ) );
+      } else {
+          // 如果stateChange是一个对象，则直接合并到setState中
+          Object.assign( component.state, stateChange );
+      }
+
+      component.prevState = component.state;
+
+    }
+    // 渲染每一个组件
+    while( component = renderQueue.shift() ) {
+        renderComponent( component );
+    }
+  }
+  // 定义延迟方法
+  function defer( fn ) {
+    // 通过 微任务 延迟执行
+    return Promise.resolve().then( fn );
+  }
+}
+```
+在 main.js 中使用
+```js
+// ...
+// 1
+componentDidMount() {
+  for (let i = 0; i < 100; i ++) {
+    this.setState({count: this.state.count + 1})
+    console.log(this.state.count)  // 100 个 0，页面渲染 1
+  }
+}
+// 2
+componentDidMount() {
+  for (let i = 0; i < 100; i ++) {
+    this.setState(prev => {
+      console.log(prev.count)  // 打印 0 - 99
+      return {
+        count: prev.count + 1  // 渲染 100
+      }
+    })
+  }
+}
+// ...
+```
 
 
 # 参考
