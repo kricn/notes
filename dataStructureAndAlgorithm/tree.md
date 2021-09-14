@@ -18,7 +18,7 @@ class Node {
   }
 }
 // 二叉树类
-class Tree() {
+class Tree {
   constructor() {
     this.root = null
   }
