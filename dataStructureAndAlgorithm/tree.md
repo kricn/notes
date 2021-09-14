@@ -119,6 +119,24 @@ class Tree() {
       return null;
     }
   }
+  // 前序遍历（迭代法）
+  function preorderTraversal(root) {
+    const result = []
+    const stack = []
+    let current = root
+    while(current || stack.length > 0) {
+      while(current) {
+        // 每拿一个节点记录一次结果，并入栈
+        result.push(current.data)
+        stack.push(current)
+        current = current.left
+      }
+      // 到最底部，读出节点，以右边节点开始，重复
+      current = stack.pop()
+      current = current.right
+    }
+    return result
+  }
   // 中序遍历（迭代法）
   function inorderTraversal(root) {
     const result = [];
@@ -148,8 +166,11 @@ class Tree() {
         stack.push(current);
         current = current.left;
       }
+      // 这里不能用 current.pop()
+      // 因为要通过 current 去找相邻的右节点
       current = stack[stack.length - 1];
       if (!current.right || current.right == last) {
+        // 没有右节点或已经访问过，可以弹出，弹出后下次则往上遍历
         current = stack.pop();
         result.push(current.data);
         last = current;
