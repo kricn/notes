@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex</title>
+
+  <style>
+
+    * { box-sizing: border-box; padding: 0; margin: 0; }
+    ul, li { list-style: none; }
+    .flex { display: flex; flex-wrap: wrap; }
+    .divide { height: 1px; background-color: #eee; margin-bottom: 12px; }
+    .box { width: 1200px; margin: 0 auto; border: 1px solid #eaeaea; padding: 20px; }
+    .list {  justify-content: space-between; align-content: flex-start; }
+    .list .item { 
+      width: 25%; 
+      padding: 0 10px; 
+      margin-bottom: 20px; 
+    }
+    .item .inner {
+      background-color: pink;
+      height: 220px;
+    }
+    .item:nth-child(3n + 1) {
+      /* margin-left: -10px; */
+    }
+    .item:nth-child(3n+3) {
+      /* margin-right: -10px; */
+    }
+
+    .item:nth-child(4n + 1) {
+      /* margin-left: -10px; */
+    }
+    .item:nth-child(4n+4) {
+      /* margin-right: -10px; */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="divide"></div>
+    <ul class="list flex">
+      <li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li>
+      <li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li><li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li><li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li><li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li><li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li><li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li><li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li><li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li><li class="item">
+        <div class="inner">
+          1
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script src="../src/main.js"></script>
+</body>
+</html>
