@@ -10,8 +10,9 @@ type DealWithParams struct {}
 // Login 定义接收数据的结构体
 type Login struct {
 	// binding:"required"修饰的字段，若接收为空值，则报错，是必须字段
-	User    string `form:"username" json:"user" uri:"user" xml:"user" binding:"required"`
+	User    string `form:"username" json:"username" uri:"username" xml:"username" binding:"required"`
 	Password string `form:"password" json:"password" uri:"password" xml:"password" binding:"required"`
+	Code     string `form:"code" json:"code" uri:"code" xml:"code"`
 }
 
 // 处理 json 格式的请求
@@ -69,8 +70,26 @@ func uriHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"status": "200"})
 }
 
+/** 处理 get 请求 */
+func getQueryHandler(c *gin.Context)  {
+	var query Login
+	if err := c.ShouldBindQuery(&query); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	// 获取所有参数
+	//allQuery := c.Request.URL.Query()
+	//fmt.Println(allQuery)
+	c.JSON(http.StatusOK, gin.H{
+		"msg": "success",
+		"username": query.User,
+		"password": query.Password,
+	})
+}
+
 func (e *DealWithParams) InitDealWithParams(r *gin.RouterGroup) {
 	r.POST("loginJSON", jsonHandler)
 	r.POST("loginForm", formHandler)
 	r.GET(":user/:password", uriHandler)
+	r.GET("getByQuery", getQueryHandler)
 }
