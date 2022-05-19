@@ -20,13 +20,20 @@ func InitRouters() {
 
 	/** 路由分组 */
 	privateRouter := r.Group("")
+	privateRouter.Use(middleware.JwtMiddleware)
+
+	/** common router */
+	commonRouter := r.Group("")
 
 	routers := new (routers.Routers)
-	/** 注册路由 */
+	// 注册公共路由
+	{
+		routers.User.InitUserRouter(commonRouter)
+	}
+	/** 注册私有路由 */
 	{
 		routers.DealWithParams.InitDealWithParams(privateRouter)
 		routers.FileUpload.InitFileUpload(privateRouter)
-		routers.User.InitUserRouter(privateRouter)
 	}
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(200, gin.H{"msg": "success"})

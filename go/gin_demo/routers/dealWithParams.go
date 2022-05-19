@@ -1,24 +1,17 @@
 package routers
 
 import (
+	"gin_demo/model"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
 type DealWithParams struct {}
 
-// Login 定义接收数据的结构体
-type Login struct {
-	// binding:"required"修饰的字段，若接收为空值，则报错，是必须字段
-	User    string `form:"username" json:"username" uri:"username" xml:"username" binding:"required"`
-	Password string `form:"password" json:"password" uri:"password" xml:"password" binding:"required"`
-	Code     string `form:"code" json:"code" uri:"code" xml:"code"`
-}
-
 // 处理 json 格式的请求
 func jsonHandler (c *gin.Context) {
 	// 声明接收的变量
-	var json Login
+	var json model.Login
 	// 将request的body中的数据，自动按照json格式解析到结构体
 	if err := c.ShouldBindJSON(&json); err != nil {
 		// 返回错误信息
@@ -37,7 +30,7 @@ func jsonHandler (c *gin.Context) {
 /** 处理 formData 格式的请求 */
 func formHandler(c *gin.Context)  {
 	// 声明接收的变量
-	var form Login
+	var form model.Login
 	// Bind()默认解析并绑定form格式
 	// 根据请求头中content-type自动推断
 	if err := c.Bind(&form); err != nil {
@@ -55,7 +48,7 @@ func formHandler(c *gin.Context)  {
 /** 处理 uri 上的请求 */
 func uriHandler(c *gin.Context) {
 	// 声明接收的变量
-	var login Login
+	var login model.Login
 	// Bind()默认解析并绑定form格式
 	// 根据请求头中content-type自动推断
 	if err := c.ShouldBindUri(&login); err != nil {
@@ -72,7 +65,7 @@ func uriHandler(c *gin.Context) {
 
 /** 处理 get 请求 */
 func getQueryHandler(c *gin.Context)  {
-	var query Login
+	var query model.Login
 	if err := c.ShouldBindQuery(&query); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
