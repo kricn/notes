@@ -3,6 +3,7 @@ package common
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/go-playground/validator/v10"
 )
 
@@ -19,7 +20,8 @@ type ValidatorMessages map[string]string
 func GetErrorMsg(request Validator, err error) string {
 	var j *json.UnmarshalTypeError
 	if errors.As(err, &j) {
-		return "Parameter error"
+		errStruct := err.(*json.UnmarshalTypeError)
+		return fmt.Sprint("Parameter ", errStruct.Field, " which type is ", errStruct.Type)
 	}
 	for _, v := range err.(validator.ValidationErrors) {
 		if message, exist := request.GetMessages()[v.Field() + "." + v.Tag()]; exist {

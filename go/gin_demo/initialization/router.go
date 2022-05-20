@@ -20,7 +20,7 @@ func InitRouters() {
 
 	/** 路由分组 */
 	privateRouter := r.Group("")
-	privateRouter.Use(middleware.JwtMiddleware)
+	privateRouter.Use(middleware.JwtAuth())
 
 	/** common router */
 	commonRouter := r.Group("")

@@ -3,9 +3,9 @@ package api
 import (
 	"gin_demo/common"
 	"gin_demo/model"
+	"gin_demo/unit"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"time"
 )
 
 type BaseApi struct {}
@@ -16,10 +16,10 @@ func (b *BaseApi) Login(c *gin.Context) {
 		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
 		return
 	}
-	token, err := model.JwtGenerateToken(&model.User{
+	token, err := unit.GenerateToken(&model.User{
 		User: json.User,
 		Password: json.Password,
-	}, time.Hour * 8)
+	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"msg": "生成token出错，请重新登录",

@@ -80,9 +80,16 @@ func getQueryHandler(c *gin.Context)  {
 	})
 }
 
+func privateTestHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"msg": "success",
+	})
+}
+
 func (e *DealWithParams) InitDealWithParams(r *gin.RouterGroup) {
 	r.POST("loginJSON", jsonHandler)
 	r.POST("loginForm", formHandler)
 	r.GET(":user/:password", uriHandler)
 	r.GET("getByQuery", getQueryHandler)
+	r.GET("private_test", privateTestHandler)
 }
