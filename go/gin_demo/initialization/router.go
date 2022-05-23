@@ -2,6 +2,7 @@ package initialization
 
 import (
 	"gin_demo/middleware"
+	"gin_demo/model/response"
 	routers "gin_demo/routers"
 	"github.com/gin-gonic/gin"
 )
@@ -33,7 +34,7 @@ func InitRouters() {
 		routers.FileUpload.InitFileUpload(privateRouter)
 	}
 	r.GET("/test", func(c *gin.Context) {
-		c.JSON(200, gin.H{"msg": "success"})
+		response.Ok(c)
 	})
 	r.Run(":1010")
 }
