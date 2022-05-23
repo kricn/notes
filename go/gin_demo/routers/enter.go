@@ -1,7 +1,12 @@
 package routers
 
+import (
+	"gin_demo/routers/common"
+	"gin_demo/routers/server"
+)
+
 type Routers struct {
-	DealWithParams
-	FileUpload
-	User
+	server.DealWithParams
+	server.FileUpload
+	common.User
 }

@@ -1,4 +1,4 @@
-package routers
+package common
 
 import (
 	"gin_demo/api"

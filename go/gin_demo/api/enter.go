@@ -1,7 +1,7 @@
 package api
 
-type ApiGroup struct {
+type AppGroup struct {
 	BaseApi
 }
 
-var App = new(ApiGroup)
+var App = new(AppGroup)

@@ -12,9 +12,6 @@ func InitRouters() {
 	/** 静态文件使用 */
 	r.Static("resource", "./resource")
 
-	// 使用中间件
-	r.Use(middleware.TestMiddleware())
-
 	// 限制表单上传大小 8MB，默认为32MB
 	r.MaxMultipartMemory = 8 << 20
 

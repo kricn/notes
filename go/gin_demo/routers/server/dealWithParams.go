@@ -1,4 +1,4 @@
-package routers
+package server
 
 import (
 	"gin_demo/model"

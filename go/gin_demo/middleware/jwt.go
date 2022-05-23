@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"fmt"
 	"gin_demo/unit"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -17,14 +16,14 @@ func JwtAuth() gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"msg": "header Authorization has not Bearer token"})
 			return
 		}
+		// 分离token的值
 		token := strings.TrimSpace(hToken[bearerLength:])
-		fmt.Println(token)
 		claims, err := unit.ParseToken(token)
-		fmt.Println(err)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"msg": err.Error()})
 			return
 		}
+		// 设置用户上下文
 		c.Set("User", *claims)
 		c.Next()
 	}
