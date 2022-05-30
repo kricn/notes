@@ -11,5 +11,6 @@ func (e *User) InitUserRouter(r *gin.RouterGroup) {
 	baseApi := api.App.BaseApi
 
 	r.POST("login", baseApi.Login)
+	r.POST("register", baseApi.Register)
 
 }

@@ -40,7 +40,9 @@ func GormMysql() *gorm.DB {
 		DefaultStringSize:         191,     // string 类型字段的默认长度
 		SkipInitializeWithVersion: false,   // 根据版本自动配置
 	}
+	fmt.Println("数据库连接中...")
 	if db, err := gorm.Open(mysql.New(mysqlConfig)); err != nil {
+		fmt.Println("数据库连接失败")
 		return nil
 	} else {
 		sqlDB, _ := db.DB()
@@ -49,6 +51,7 @@ func GormMysql() *gorm.DB {
 		//sqlDB.SetMaxOpenConns(m.MaxOpenConns)
 		// 初始化表
 		RegisterTables(db)
+		fmt.Println("数据库链接成功")
 		return db
 	}
 }

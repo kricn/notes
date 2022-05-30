@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"gin_demo/unit"
+	"gin_demo/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -18,7 +18,7 @@ func JwtAuth() gin.HandlerFunc {
 		}
 		// 分离token的值
 		token := strings.TrimSpace(hToken[bearerLength:])
-		claims, err := unit.ParseToken(token)
+		claims, err := utils.ParseToken(token)
 		if err != nil {
 			c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"msg": err.Error()})
 			return

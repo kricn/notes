@@ -3,7 +3,7 @@ package api
 import (
 	"gin_demo/common"
 	"gin_demo/model"
-	"gin_demo/unit"
+	"gin_demo/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -16,7 +16,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
 		return
 	}
-	token, err := unit.GenerateToken(&model.User{
+	token, err := utils.GenerateToken(&model.User{
 		User: json.User,
 		Password: json.Password,
 	})
@@ -29,4 +29,13 @@ func (b *BaseApi) Login(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"token": token,
 	})
+}
+
+func (b *BaseApi) Register(c *gin.Context) {
+	var json model.Login
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
+		return
+	}
+
 }
