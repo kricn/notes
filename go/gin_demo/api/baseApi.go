@@ -19,7 +19,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 	}
 	if !utils.CaptchaVerify(c, json.Code) {
 		response.FailWithMessage("验证码错误", c)
-		return ;
+		return
 	}
 	token, err := utils.GenerateToken(&model.User{
 		User: json.User,
@@ -45,5 +45,10 @@ func (b *BaseApi) Register(c *gin.Context) {
 		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
 		return
 	}
-
+	if !utils.CaptchaVerify(c, json.Code) {
+		response.FailWithMessage("验证码错误", c)
+		return
+	}
+	// todo 查村用户是否存在
+	response.OkWithMessage("注册成功", c)
 }
