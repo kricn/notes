@@ -7,12 +7,13 @@ type Login struct {
 	// binding:"required"修饰的字段，若接收为空值，则报错，是必须字段
 	User    string `form:"username" json:"username" uri:"username" xml:"username" binding:"required"`
 	Password string `form:"password" json:"password" uri:"password" xml:"password" binding:"required"`
-	Code     string `form:"code" json:"code" uri:"code" xml:"code"`
+	Code     string `form:"code" json:"code" uri:"code" xml:"code" binding:"required"`
 }
 func (loginForm Login) GetMessages() common.ValidatorMessages {
 	return common.ValidatorMessages{
 		"User.required": "请输入用户名",
 		"Password.required": "请输入密码",
+		"Code.required": "请输入验证码",
 	}
 }
 
@@ -20,4 +21,15 @@ type User struct {
 	User    string `form:"username" json:"username" uri:"username" xml:"username""`
 	Password string `form:"password" json:"password" uri:"password" xml:"password""`
 }
+
+type LoginResponse struct {
+	// *model.User, // 合并结构体
+	UserInfo UserInfo `json:"user_info"`
+	Token string `json:"token"`
+}
+
+type UserInfo struct {
+	User    string `form:"username" json:"username" uri:"username" xml:"username""`
+}
+
 

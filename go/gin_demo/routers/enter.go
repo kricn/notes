@@ -9,4 +9,5 @@ type Routers struct {
 	server.DealWithParams
 	server.FileUpload
 	common.User
+	common.Common
 }

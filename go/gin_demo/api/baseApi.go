@@ -3,6 +3,7 @@ package api
 import (
 	"gin_demo/common"
 	"gin_demo/model"
+	"gin_demo/model/response"
 	"gin_demo/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -16,6 +17,10 @@ func (b *BaseApi) Login(c *gin.Context) {
 		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
 		return
 	}
+	if !utils.CaptchaVerify(c, json.Code) {
+		response.FailWithMessage("验证码错误", c)
+		return ;
+	}
 	token, err := utils.GenerateToken(&model.User{
 		User: json.User,
 		Password: json.Password,
@@ -26,9 +31,12 @@ func (b *BaseApi) Login(c *gin.Context) {
 		})
 		return
 	}
-	c.JSON(http.StatusOK, gin.H{
-		"token": token,
-	})
+	response.OkWithDetailed(&model.LoginResponse{
+		UserInfo: model.UserInfo{
+			User: json.User,
+		},
+		Token: token,
+	}, "登录成功", c)
 }
 
 func (b *BaseApi) Register(c *gin.Context) {

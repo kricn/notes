@@ -27,6 +27,7 @@ func InitRouters() {
 	// 注册公共路由
 	{
 		routers.User.InitUserRouter(commonRouter)
+		routers.Common.InitCommonRouter(commonRouter)
 	}
 	/** 注册私有路由 */
 	{
