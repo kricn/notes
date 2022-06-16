@@ -45,8 +45,6 @@ func GormMysql() *gorm.DB {
 		fmt.Println("数据库连接失败")
 		return nil
 	} else {
-		sqlDB, _ := db.DB()
-		defer sqlDB.Close()
 		//sqlDB.SetMaxIdleConns(m.MaxIdleConns)
 		//sqlDB.SetMaxOpenConns(m.MaxOpenConns)
 		// 初始化表

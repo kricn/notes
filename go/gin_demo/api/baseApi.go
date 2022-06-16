@@ -1,11 +1,17 @@
 package api
 
 import (
+	"errors"
+	"fmt"
 	"gin_demo/common"
+	"gin_demo/global"
 	"gin_demo/model"
+	gorm2 "gin_demo/model/gorm"
 	"gin_demo/model/response"
 	"gin_demo/utils"
 	"github.com/gin-gonic/gin"
+	uuid "github.com/satori/go.uuid"
+	"gorm.io/gorm"
 	"net/http"
 )
 
@@ -49,6 +55,19 @@ func (b *BaseApi) Register(c *gin.Context) {
 		response.FailWithMessage("验证码错误", c)
 		return
 	}
-	// todo 查村用户是否存在
+	if !errors.Is(global.DB.Where("username = ?", json.User).First(&gorm2.SysUser{}).Error, gorm.ErrRecordNotFound) {
+		response.FailWithMessage("用户已注册", c)
+		return
+	}
+	err := global.DB.Create(&gorm2.SysUser{
+		Username: json.User,
+		Password: json.Password,
+		UUID: uuid.NewV4(),
+	}).Error
+	fmt.Println(err)
+	if err != nil {
+		response.FailWithMessage("注册失败，请重试", c)
+		return
+	}
 	response.OkWithMessage("注册成功", c)
 }
