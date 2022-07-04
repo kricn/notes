@@ -8,6 +8,8 @@ import (
 func main() {
 	// 初始化数据库
 	global.DB = initialization.GormMysql()
+	// 初始化 redis
+	global.RDB, _ = initialization.InitClient()
 	if global.DB != nil {
 		db, _ := global.DB.DB()
 		defer db.Close()
