@@ -20,19 +20,24 @@ func InitRouters() {
 	privateRouter := r.Group("")
 	privateRouter.Use(middleware.JwtAuth())
 
+	// 用户组
+	userRouter := privateRouter.Group("user")
+
 	/** common router */
 	commonRouter := r.Group("")
 
 	routers := new (routers.Routers)
 	// 注册公共路由
 	{
-		routers.User.InitUserRouter(commonRouter)
+		routers.CommonUser.InitUserRouter(commonRouter)
 		routers.Common.InitCommonRouter(commonRouter)
 	}
 	/** 注册私有路由 */
 	{
 		routers.DealWithParams.InitDealWithParams(privateRouter)
 		routers.FileUpload.InitFileUpload(privateRouter)
+		/** 注册用户组路由 */
+		routers.User.InitRouters(userRouter)
 	}
 	r.GET("/test", func(c *gin.Context) {
 		response.Ok(c)

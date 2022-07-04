@@ -18,7 +18,7 @@ import (
 type BaseApi struct {}
 
 func (b *BaseApi) Login(c *gin.Context) {
-	var json model.Login
+	var json model.LoginForm
 	if err := c.ShouldBindJSON(&json); err != nil {
 		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
 		return
@@ -27,26 +27,30 @@ func (b *BaseApi) Login(c *gin.Context) {
 		response.FailWithMessage("验证码错误", c)
 		return
 	}
-	token, err := utils.GenerateToken(&model.User{
-		User: json.User,
+	if errors.Is(global.DB.Where("username = ? AND password = ?", json.Username, json.Password).First(&gorm2.SysUser{}).Error, gorm.ErrRecordNotFound) {
+		response.FailWithMessage("用户名或密码错误", c)
+		return
+	}
+	token, err := utils.GenerateToken(&model.UserInfo{
+		Username: json.Username,
 		Password: json.Password,
 	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"msg": "生成token出错，请重新登录",
+			"msg": "授权失败，请重新登录",
 		})
 		return
 	}
-	response.OkWithDetailed(&model.LoginResponse{
-		UserInfo: model.UserInfo{
-			User: json.User,
+	response.OkWithDetailed(&model.ResponseLoginInfo{
+		UserInfo: model.ResponseUserInfo{
+			Username: json.Username,
 		},
 		Token: token,
 	}, "登录成功", c)
 }
 
 func (b *BaseApi) Register(c *gin.Context) {
-	var json model.Login
+	var json model.LoginForm
 	if err := c.ShouldBindJSON(&json); err != nil {
 		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
 		return
@@ -55,12 +59,12 @@ func (b *BaseApi) Register(c *gin.Context) {
 		response.FailWithMessage("验证码错误", c)
 		return
 	}
-	if !errors.Is(global.DB.Where("username = ?", json.User).First(&gorm2.SysUser{}).Error, gorm.ErrRecordNotFound) {
+	if !errors.Is(global.DB.Where("username = ?", json.Username).First(&gorm2.SysUser{}).Error, gorm.ErrRecordNotFound) {
 		response.FailWithMessage("用户已注册", c)
 		return
 	}
-	err := global.DB.Create(&gorm2.SysUser{
-		Username: json.User,
+	err := global.DB.Create(&model.UserInfo{
+		Username: json.Username,
 		Password: json.Password,
 		UUID: uuid.NewV4(),
 	}).Error

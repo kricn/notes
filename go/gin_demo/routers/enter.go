@@ -5,9 +5,11 @@ import (
 	"gin_demo/routers/server"
 )
 
+
 type Routers struct {
 	server.DealWithParams
 	server.FileUpload
-	common.User
+	server.User
+	CommonUser common.User
 	common.Common
 }

@@ -20,13 +20,13 @@ type Claims struct {
 }
 
 // GenerateToken 根据用户的用户名和密码产生token
-func GenerateToken(user *model.User) (string, error) {
+func GenerateToken(user *model.UserInfo) (string, error) {
 	// 设置 token 有效时间
 	nowTime := time.Now()
 	expireTime := nowTime.Add(3 * time.Hour)
 
 	claims := &Claims{
-		User:     user.User,
+		User:     user.Username,
 		Password: user.Password,
 		StandardClaims: jwt.StandardClaims{
 			// 过期时间

@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"gin_demo/global"
 	"gin_demo/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -20,11 +21,11 @@ func JwtAuth() gin.HandlerFunc {
 		token := strings.TrimSpace(hToken[bearerLength:])
 		claims, err := utils.ParseToken(token)
 		if err != nil {
-			c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"msg": err.Error()})
+			c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{"msg": "无效token"})
 			return
 		}
 		// 设置用户上下文
-		c.Set("User", *claims)
+		global.RDB.HSet("user", "user", claims)
 		c.Next()
 	}
 }
