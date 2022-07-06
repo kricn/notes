@@ -4,6 +4,7 @@ import (
 	"errors"
 	"gin_demo/model"
 	"github.com/dgrijalva/jwt-go"
+	uuid "github.com/satori/go.uuid"
 	"time"
 )
 
@@ -15,8 +16,9 @@ const jwtIss = "demo"
 // Claims Claim是一些实体（通常指的用户）的状态和额外的元数据
 type Claims struct {
 	jwt.StandardClaims
-	User     string `json:"username"`
+	Username     string `json:"username"`
 	Password string `json:"password"`
+	Uuid uuid.UUID `json:"uuid"`
 }
 
 // GenerateToken 根据用户的用户名和密码产生token
@@ -26,8 +28,9 @@ func GenerateToken(user *model.UserInfo) (string, error) {
 	expireTime := nowTime.Add(3 * time.Hour)
 
 	claims := &Claims{
-		User:     user.Username,
+		Username:     user.Username,
 		Password: user.Password,
+		Uuid: user.UUID,
 		StandardClaims: jwt.StandardClaims{
 			// 过期时间
 			ExpiresAt: expireTime.Unix(),

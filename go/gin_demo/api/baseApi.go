@@ -1,6 +1,7 @@
 package api
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"gin_demo/common"
@@ -13,27 +14,30 @@ import (
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
 	"net/http"
+	"time"
 )
 
 type BaseApi struct {}
 
 func (b *BaseApi) Login(c *gin.Context) {
-	var json model.LoginForm
-	if err := c.ShouldBindJSON(&json); err != nil {
-		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
+	var form model.LoginForm
+	if err := c.ShouldBindJSON(&form); err != nil {
+		c.JSON(400, gin.H{"message": common.GetErrorMsg(form, err)})
 		return
 	}
-	if !utils.CaptchaVerify(c, json.Code) {
-		response.FailWithMessage("验证码错误", c)
-		return
-	}
-	if errors.Is(global.DB.Where("username = ? AND password = ?", json.Username, json.Password).First(&gorm2.SysUser{}).Error, gorm.ErrRecordNotFound) {
+	//if !utils.CaptchaVerify(c, json.Code) {
+	//	response.FailWithMessage("验证码错误", c)
+	//	return
+	//}
+	queryUser := &gorm2.SysUser{}
+	if errors.Is(global.DB.Where("username = ? AND password = ?", form.Username, form.Password).Find(&queryUser).Error, gorm.ErrRecordNotFound) {
 		response.FailWithMessage("用户名或密码错误", c)
 		return
 	}
 	token, err := utils.GenerateToken(&model.UserInfo{
-		Username: json.Username,
-		Password: json.Password,
+		Username: form.Username,
+		Password: form.Password,
+		UUID: queryUser.UUID,
 	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -41,9 +45,14 @@ func (b *BaseApi) Login(c *gin.Context) {
 		})
 		return
 	}
+	cacheData, _ := json.Marshal(queryUser)
+	global.RDB.Set(queryUser.Username, cacheData, time.Hour * 8)
 	response.OkWithDetailed(&model.ResponseLoginInfo{
 		UserInfo: model.ResponseUserInfo{
-			Username: json.Username,
+			UUID: queryUser.UUID,
+			Username: queryUser.Username,
+			NickName: queryUser.NickName,
+			HeaderImg: queryUser.HeaderImg,
 		},
 		Token: token,
 	}, "登录成功", c)

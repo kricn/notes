@@ -36,7 +36,7 @@ func GormMysql() *gorm.DB {
 		return nil
 	}
 	mysqlConfig := mysql.Config{
-		DSN:                       m.Dsn(), // DSN data source name
+		DSN:                       m.Dsn() + "parseTime=true", // DSN data source name
 		DefaultStringSize:         191,     // string 类型字段的默认长度
 		SkipInitializeWithVersion: false,   // 根据版本自动配置
 	}

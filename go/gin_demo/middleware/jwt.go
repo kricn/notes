@@ -1,7 +1,6 @@
 package middleware
 
 import (
-	"gin_demo/global"
 	"gin_demo/utils"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -20,7 +19,7 @@ func JwtAuth() gin.HandlerFunc {
 		}
 		// 分离token的值
 		token := strings.TrimSpace(hToken[bearerLength:])
-		claims, err := utils.ParseToken(token)
+		_, err := utils.ParseToken(token)
 		if err != nil {
 			response := handleTokenUnValidationResponse(err)
 			c.AbortWithStatusJSON(http.StatusPreconditionFailed, gin.H{
@@ -29,8 +28,6 @@ func JwtAuth() gin.HandlerFunc {
 			})
 			return
 		}
-		// 设置用户上下文
-		global.RDB.HSet("user", "user", claims)
 		c.Next()
 	}
 }

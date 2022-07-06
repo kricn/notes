@@ -22,7 +22,10 @@ type ResponseLoginInfo struct {
 
 // ResponseUserInfo 返回的用户信息
 type ResponseUserInfo struct {
-	Username    string `form:"username" json:"username" uri:"username" xml:"username""`
+	Username    string `json:"username" uri:"username" xml:"username""`
+	UUID        uuid.UUID      `json:"uuid" gorm:"comment:用户UUID"`                                                              // 用户登录密码
+	NickName    string         `json:"nickName" gorm:"default:系统用户;comment:用户昵称"`                                            // 用户侧边主题
+	HeaderImg   string         `json:"headerImg" gorm:"default:https://qmplusimg.henrongyi.top/gva_header.jpg;comment:用户头像"` // 用户头像
 }
 
 // LoginForm 定义接收数据的结构体
