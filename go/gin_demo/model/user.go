@@ -16,7 +16,7 @@ func (loginForm LoginForm) GetMessages() common.ValidatorMessages {
 // ResponseLoginInfo 登录响应信息
 type ResponseLoginInfo struct {
 	// *model.User, // 合并结构体
-	UserInfo ResponseUserInfo `json:"user_info"`
+	UserInfo ResponseUserInfo `json:"userInfo"`
 	Token string `json:"token"`
 }
 

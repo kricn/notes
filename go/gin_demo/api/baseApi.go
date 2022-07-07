@@ -22,7 +22,7 @@ type BaseApi struct {}
 func (b *BaseApi) Login(c *gin.Context) {
 	var form model.LoginForm
 	if err := c.ShouldBindJSON(&form); err != nil {
-		c.JSON(400, gin.H{"message": common.GetErrorMsg(form, err)})
+		c.JSON(400, gin.H{"code": -1, "msg": common.GetErrorMsg(form, err)})
 		return
 	}
 	//if !utils.CaptchaVerify(c, json.Code) {
@@ -30,7 +30,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 	//	return
 	//}
 	queryUser := &gorm2.SysUser{}
-	if errors.Is(global.DB.Where("username = ? AND password = ?", form.Username, form.Password).Find(&queryUser).Error, gorm.ErrRecordNotFound) {
+	if errors.Is(global.DB.Where("username = ? AND password = ?", form.Username, form.Password).First(&queryUser).Error, gorm.ErrRecordNotFound) {
 		response.FailWithMessage("用户名或密码错误", c)
 		return
 	}
