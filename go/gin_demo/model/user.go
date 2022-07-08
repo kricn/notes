@@ -38,9 +38,9 @@ type LoginForm struct {
 
 // UserInfo 所有的用户信息
 type UserInfo struct {
-	UUID        uuid.UUID      `json:"uuid" gorm:"comment:用户UUID"`                                                           // 用户UUID
-	Username    string         `json:"userName" gorm:"comment:用户登录名"`                                                        // 用户登录名
-	Password    string         `json:"-"  gorm:"comment:用户登录密码"`                                                             // 用户登录密码
-	NickName    string         `json:"nickName" gorm:"default:系统用户;comment:用户昵称"`                                            // 用户侧边主题
-	HeaderImg   string         `json:"headerImg" gorm:"default:https://qmplusimg.henrongyi.top/gva_header.jpg;comment:用户头像"` // 用户头像
+	UUID        uuid.UUID      `form:"uuid" json:"uuid" gorm:"comment:用户UUID"`                                                           // 用户UUID
+	Username    string         `form:"username" json:"username" gorm:"comment:用户登录名"`                                                        // 用户登录名
+	Password    string         `form:"password" json:"-"  gorm:"comment:用户登录密码"`                                                             // 用户登录密码
+	NickName    string         `form:"nickName" json:"nickName" gorm:"default:系统用户;comment:用户昵称"`                                            // 用户侧边主题
+	HeaderImg   string         `form:"headerImg" json:"headerImg" gorm:"default:https://qmplusimg.henrongyi.top/gva_header.jpg;comment:用户头像"` // 用户头像
 }
