@@ -1,6 +1,7 @@
 package server
 
 import (
+	"gin_demo/model/response"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -24,10 +25,9 @@ func uploadHandler(c *gin.Context) {
 			uploadFile(err, c)
 			return
 		}
-		c.JSON(http.StatusOK, gin.H{
-			"msg": "upload.success",
+		response.OkWithDetailed(map[string]interface{}{
 			"path": filePath,
-		})
+		}, "上传成功", c)
 	} else {
 		form, err := c.MultipartForm()
 		if err != nil {
@@ -41,20 +41,20 @@ func uploadHandler(c *gin.Context) {
 			// 逐个存
 			if err := c.SaveUploadedFile(file, "./" + path + file.Filename); err != nil {
 				c.JSON(http.StatusInternalServerError, gin.H{
+					"code": -1,
 					"msg": err,
 				})
 				return
 			}
 		}
-		c.JSON(http.StatusOK, gin.H{
-			"msg": "upload success",
-		})
+		response.OkWithMessage("上传成功", c)
 	}
 }
 
 func uploadFile(err error, c *gin.Context) {
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
+			"code": -1,
 			"msg": err,
 		})
 	}
