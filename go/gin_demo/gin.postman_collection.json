@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "abd1f2fe-1a6b-4d30-84c2-f3a6cb021d2e",
+		"name": "gin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "common",
+			"item": [
+				{
+					"name": "localhost:1010/captcha",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTMyODAxOTUsImlzcyI6ImRlbW8iLCJ1c2VybmFtZSI6InJvb3QiLCJwYXNzd29yZCI6IjEyMyJ9.aZ2JgVMOuxevaMSKwEdjIKkWlZRia7S-ORMsX6NPdB0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"root\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1010/captcha",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"captcha"
+							]
+						},
+						"description": "获取验证码"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "localhost:1010/login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NTMyODAxOTUsImlzcyI6ImRlbW8iLCJ1c2VybmFtZSI6InJvb3QiLCJwYXNzd29yZCI6IjEyMyJ9.aZ2JgVMOuxevaMSKwEdjIKkWlZRia7S-ORMsX6NPdB0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"root\",\r\n    \"password\": \"123\",\r\n    \"code\": \"3137\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1010/login",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"login"
+							]
+						},
+						"description": "登录接口\r\nusername string 用户名\r\npassword string 密码\r\ncode string 验证码"
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:1010/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"root\",\r\n    \"password\": \"12345\",\r\n    \"code\": \"0334\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:1010/register",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"register"
+							]
+						},
+						"description": "用户注册\r\n\r\n参数和登录一样"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
