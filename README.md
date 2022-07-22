@@ -25,7 +25,7 @@
   [webpack不完全配置](/js/webpack)\
   [webpack编译原理](/js/webpack_compile)\
   [axios请求重试和取消重复请求](/js/axios请求重试和取消重复请求)\
-  [乞丐版 Promise 实现](/js/promise实现)
+  [乞丐版 Promise 实现](/js/promise实现.md) 
   [发布订阅者模式](/js/发布订阅者模式)
 
 # Vue
