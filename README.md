@@ -26,6 +26,7 @@
   [webpack编译原理](/js/webpack_compile)\
   [axios请求重试和取消重复请求](/js/axios请求重试和取消重复请求)\
   [乞丐版 Promise 实现](/js/promise实现)
+  [发布订阅者模式](/js/发布订阅者模式)
 
 # Vue
   [vue首屏加载优化](/vue/vue首屏加载优化.md)\
