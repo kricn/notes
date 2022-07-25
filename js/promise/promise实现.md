@@ -43,6 +43,29 @@ class WPromise {
     }
   }
 
+  // all 的实现
+  all(promises) {
+    return new Promise(function(resolve, reject) {
+      if (!Array.isArray(promises)) {
+        return reject(new TypeError('arguments must be an array'));
+      }
+      var resolvedCounter = 0;
+      var promiseNum = promises.length;
+      var resolvedValues = new Array(promiseNum);
+      for (let i = 0; i < promiseNum; i++) {
+        Promise.resolve(promises[i]).then(function(value) {
+          resolvedCounter++
+          resolvedValues[i] = value
+          if (resolvedCounter == promiseNum) {
+            return resolve(resolvedValues)
+          }
+        }, function(reason) {
+          return reject(reason)
+        })
+      }
+    })
+  }
+
   // 改变状态的方法，只能通过这两个方法改变
   _resolve(value) {
     this.status = WPromise.fulfilled
