@@ -8,5 +8,9 @@ import (
 type CommonApi struct {}
 
 func (common *CommonApi) GenerateCaptcha(c *gin.Context) {
-	utils.Captcha(c, 4)
+	w, h := 107, 36
+	captchaId := c.DefaultQuery("captchaId", "")
+	captchaValue := utils.GenerateCaptcha(4)
+	utils.SetCaptcha(captchaId, captchaValue, c)
+	utils.Serve(c.Writer, c.Request, captchaValue, ".png", "zh", false, w, h)
 }

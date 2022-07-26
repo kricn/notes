@@ -1,6 +1,7 @@
 package initialization
 
 import (
+	"gin_demo/global"
 	"gin_demo/middleware"
 	"gin_demo/model/response"
 	routers "gin_demo/routers"
@@ -9,6 +10,8 @@ import (
 
 func InitRouters() {
 	r := gin.Default()
+
+	global.CAPTCHA_STORE = middleware.SessionConfig()
 
 	/** 静态文件使用 */
 	r.Static("resource", "./resource")
