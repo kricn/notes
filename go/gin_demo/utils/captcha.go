@@ -2,12 +2,12 @@ package utils
 
 import (
 	"bytes"
+	"gin_demo/global"
 	"github.com/dchest/captcha"
-	"github.com/gin-contrib/sessions"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"time"
 )
+
 
 func GenerateCaptcha(length ...int) string {
 	l := captcha.DefaultLen
@@ -17,18 +17,14 @@ func GenerateCaptcha(length ...int) string {
 	return captcha.NewLen(l)
 }
 
-func SetCaptcha(key string, value string, c *gin.Context,)  {
-	session := sessions.Default(c)
-	session.Set(key, value)
-	_ = session.Save()
+func SetCaptcha(key string, value string)  {
+	global.RDB.Set(key, value, time.Minute * 10)
 }
 
-func CaptchaVerify(key string, code string, c *gin.Context) bool {
-	session := sessions.Default(c)
-	if captchaId := session.Get(key); captchaId != nil {
-		session.Delete(key)
-		_ = session.Save()
-		if captcha.VerifyString(captchaId.(string), code) {
+func CaptchaVerify(key string, code string) bool {
+	if captchaId, err := global.RDB.Get(key).Result(); err == nil{
+		global.RDB.Del(key)
+		if captcha.VerifyString(captchaId, code) {
 			return true
 		} else {
 			return false

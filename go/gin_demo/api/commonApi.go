@@ -11,6 +11,6 @@ func (common *CommonApi) GenerateCaptcha(c *gin.Context) {
 	w, h := 107, 36
 	captchaId := c.DefaultQuery("captchaId", "")
 	captchaValue := utils.GenerateCaptcha(4)
-	utils.SetCaptcha(captchaId, captchaValue, c)
+	utils.SetCaptcha(captchaId, captchaValue)
 	utils.Serve(c.Writer, c.Request, captchaValue, ".png", "zh", false, w, h)
 }

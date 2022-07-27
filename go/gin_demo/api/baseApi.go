@@ -10,7 +10,6 @@ import (
 	gorm2 "gin_demo/model/gorm"
 	"gin_demo/model/response"
 	"gin_demo/utils"
-	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
@@ -26,7 +25,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 		c.JSON(400, gin.H{"code": -1, "msg": common.GetErrorMsg(form, err)})
 		return
 	}
-	//if !utils.CaptchaVerify(form.CaptchaId, form.Code, c) {
+	//if !utils.CaptchaVerify(form.CaptchaId, form.Code) {
 	//	response.FailWithMessage("验证码错误", c)
 	//	return
 	//}
@@ -48,9 +47,6 @@ func (b *BaseApi) Login(c *gin.Context) {
 	}
 	cacheData, _ := json.Marshal(queryUser)
 	global.RDB.Set(queryUser.Username, cacheData, time.Hour * 8)
-	session := sessions.Default(c)
-	session.Set("user", cacheData)
-	_ = session.Save()
 	response.OkWithDetailed(&model.ResponseLoginInfo{
 		UserInfo: model.ResponseUserInfo{
 			UUID: queryUser.UUID,
@@ -68,7 +64,7 @@ func (b *BaseApi) Register(c *gin.Context) {
 		c.JSON(400, gin.H{"message": common.GetErrorMsg(form, err)})
 		return
 	}
-	if !utils.CaptchaVerify(form.CaptchaId, form.Code, c) {
+	if !utils.CaptchaVerify(form.CaptchaId, form.Code) {
 		response.FailWithMessage("验证码错误", c)
 		return
 	}
