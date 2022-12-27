@@ -25,7 +25,7 @@ func (b *BaseApi) Login(c *gin.Context) {
 		c.JSON(400, gin.H{"code": -1, "msg": common.GetErrorMsg(form, err)})
 		return
 	}
-	//if !utils.CaptchaVerify(c, json.Code) {
+	//if !utils.CaptchaVerify(form.CaptchaId, form.Code) {
 	//	response.FailWithMessage("验证码错误", c)
 	//	return
 	//}
@@ -59,22 +59,22 @@ func (b *BaseApi) Login(c *gin.Context) {
 }
 
 func (b *BaseApi) Register(c *gin.Context) {
-	var json model.LoginForm
-	if err := c.ShouldBindJSON(&json); err != nil {
-		c.JSON(400, gin.H{"message": common.GetErrorMsg(json, err)})
+	var form model.LoginForm
+	if err := c.ShouldBindJSON(&form); err != nil {
+		c.JSON(400, gin.H{"message": common.GetErrorMsg(form, err)})
 		return
 	}
-	if !utils.CaptchaVerify(c, json.Code) {
+	if !utils.CaptchaVerify(form.CaptchaId, form.Code) {
 		response.FailWithMessage("验证码错误", c)
 		return
 	}
-	if !errors.Is(global.DB.Where("username = ?", json.Username).First(&gorm2.SysUser{}).Error, gorm.ErrRecordNotFound) {
+	if !errors.Is(global.DB.Where("username = ?", form.Username).First(&gorm2.SysUser{}).Error, gorm.ErrRecordNotFound) {
 		response.FailWithMessage("用户已注册", c)
 		return
 	}
 	err := global.DB.Create(&model.UserInfo{
-		Username: json.Username,
-		Password: json.Password,
+		Username: form.Username,
+		Password: form.Password,
 		UUID: uuid.NewV4(),
 	}).Error
 	fmt.Println(err)
@@ -84,3 +84,4 @@ func (b *BaseApi) Register(c *gin.Context) {
 	}
 	response.OkWithMessage("注册成功", c)
 }
+

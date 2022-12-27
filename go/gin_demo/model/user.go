@@ -34,6 +34,7 @@ type LoginForm struct {
 	Username    string `form:"username" json:"username" uri:"username" xml:"username" binding:"required"`
 	Password string `form:"password" json:"password" uri:"password" xml:"password" binding:"required"`
 	Code     string `form:"code" json:"code" uri:"code" xml:"code" binding:"required"`
+	CaptchaId string `form:"captchaId" json:"captchaId" uri:"captchaId" xml:"captchaId"`
 }
 
 // UserInfo 所有的用户信息
